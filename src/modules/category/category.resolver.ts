@@ -1,10 +1,13 @@
 import { Query, Resolver } from '@nestjs/graphql';
-import { Category } from './dto/category';
+import { CategoryService } from './category.service';
+import { CategoryPublic } from './dto/category';
 
-@Resolver(of => Category)
+@Resolver(of => CategoryPublic)
 export class CategoryResolver {
-  @Query(returns => [Category], { name: 'getAllCategories' })
-  async getAllCategories(): Promise<Category[]> {
-    return [];
+  constructor(private categoryService: CategoryService) {}
+
+  @Query(returns => [CategoryPublic], { name: 'getAllCategories' })
+  async getAllCategories(): Promise<CategoryPublic[]> {
+    return this.categoryService.getAll();
   }
 }

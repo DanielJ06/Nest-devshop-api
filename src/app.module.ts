@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { async } from 'rxjs';
-import { Category } from './modules/category/category.entity';
 import { CategoryModule } from './modules/category/category.module';
 
 @Module({
